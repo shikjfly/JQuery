@@ -5,20 +5,78 @@
 	<title>01002</title>
 	<script type="text/javascript" src="../scripts/jquery.js"></script>
 	<script type="text/javascript">
-		$(".level1 > a").click(function(){
-			$(this).css("color","blue")
-			return false;
+		
+
+		$(function() {
+			// 第一个例子
+			$(".level1 > a").click(function(){
+				$(this).addClass("current")
+				.next().show()
+				.parent().siblings().children("a").removeClass("current")
+				.next().hide()
+				
+				return false;
+			});
+			// 第二个例子 方式一，利用Dom
+			// var $cr = $("#cr");
+			// var cr = $cr[0];
+			// $cr.click(function(){
+			// 	if (cr.checked) {
+			// 		alert("感谢支持");
+			// 	}
+			// })
+			// 第二个例子 方式二， 利用jQuery
+			var $cr = $("#cr");
+			$cr.click(function(){
+				if ( $cr.is(":checked") ) {
+					alert("感谢支持.....");
+				}
+			})
+
 		});
+
+
+
 
 	</script>
 
 	<style type="text/css">
-		a{
-			/*border: 1px solid red;*/
+
+		li{
+			list-style: none;
 		}
+		a{
+			text-decoration: none;
+		}
+		.menu{
+			border-bottom: 1px solid grey;
+			border-right:  1px solid grey;
+			border-left:   1px solid grey;
+			width: 150px;
+		}
+		.level1>a{
+			border-bottom: 1px solid grey;
+			border-top: 1px solid grey;
+			width: 150px;
+			display: block;
+			background: lightgrey;
+		}
+		.level2, .menu{
+			padding-left: 0px;
+		}
+		.level2{
+			display: none;
+		}
+
+		.current{
+			background: grey  !important;;
+
+		}
+
 	</style>
 </head>
 <body>
+	<!-- 第一个例子 -->
 	<div class="box">
 		<ul class="menu">
 			<li class="level1">
@@ -50,6 +108,13 @@
 			</li>
 
 		</ul>
+	</div>
+	<!-- 第二个例子 -->
+	<div>
+		<form>
+			<input type="checkbox" name="cr" id="cr">
+			<label for="cr">我已经阅读上面的制度</label>
+		</form>
 	</div>
 </body>
 </html>
