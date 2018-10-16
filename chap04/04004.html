@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+			$('#panel').css('opacity', '0.5');
+
+			$('#panel').bind('click', function(event) {
+				/* Act on the event */
+				// $('#panel').animate({"left": "+=30px", height:"+=10px"}, 300) 
+			/*   $(this).animate({"left": "+=30px"}, 300)
+				 $(this).animate({height:"+=10px"}, 300)   */
+				// $(this).animate({"left": "+=30px"}, 300).animate({height:"+=10px"}, 300)
+
+				$(this).animate({left:"400px", height:"200px", opacity:"1"}, 3000)
+					   .animate({top: "200px", width: "200px;"}, 3000 ,function(){
+					   		$(this).css('border', '5px solid blue');
+					   })
+					   .fadeOut("slow");
+			});
+
+			$('#panel').hover(function() {
+				/* Stuff to do when the mouse enters the element */
+				$(this).stop(true)
+					   .delay(1000)
+					   .animate({height:"150px"}, 200)
+					   .delay(1000)
+					   .animate({width:"150px"}, 300);
+			}, function() {
+				/* Stuff to do when the mouse leaves the element */
+				$(this).stop(true)
+					   .delay(1000)
+					   .animate({height:"22px"}, 200)
+					   .delay(1000)
+					   .animate({width:"50px"}, 300);
+			});
+
+
+
+
+	
+		});			
+	</script>
+	<style>
+		#panel{
+			background: #96E555;
+			width: 100px;
+			height: 100px;
+			border: 1px solid #005000;
+			cursor: pointer;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id="panel"></div>
+</body>
+</html>

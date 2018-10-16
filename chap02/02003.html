@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02003</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			// 点击测试：方式一
+			// var items = document.getElementsByTagName('p');
+			// for (var i = 0; i < items.length; i++) {
+			// 	items[i].onclick = function(){
+			// 		alert("XXS");
+			// 	}
+			// }
+			// 点击测试：方式二
+			$("p").click(function() {
+				alert("JQuey")
+			});
+			// 表格换色，方式一
+			// var table = document.getElementById('tb');
+			// var tbodys = table.getElementsByTagName('tbody');
+			// var trs = tbodys[0].getElementsByTagName('tr');
+			// for (var i = 0; i < trs.length; i++) {
+			// if (i%2==0) {
+			// 		trs[i].style.background = "red";
+			// 	}
+			// }
+			// 表格换色，方式二
+			$("#tb tbody tr:odd").css('background', 'yellow');
+
+			// 选中个数，方式一
+			// var btn = document.getElementById('btn');
+			// btn.onclick = function(){
+			// 	var arrays = new Array();
+			// 	var checks = document.getElementsByName('check');
+
+			// 	for (var i = 0; i < checks.length; i++) {
+			// 		if (checks[i].checked) {
+			// 			arrays.push(checks[i].value);
+			// 		}
+			// 	};
+			// 	alert("选中个数："+arrays.length);
+			// }
+			// 选中个数，方式二
+			$("#btn").click(function() {
+				alert($( "input[name='check']:checked").length );
+			});
+
+		});
+	</script>
+	<style>
+		p{border: 1px solid red;width: 200px;}
+	</style>
+
+</head>
+<body>
+	<!-- 1111 -->
+	<p>点击测试1</p>
+	<p>点击测试2</p>
+	<hr>
+	<!-- 2222 -->
+	<table id="tb">
+		<tbody>
+			<tr><td>第1行</td><td>第1行</td></tr>
+			<tr><td>第2行</td><td>第2行</td></tr>
+			<tr><td>第3行</td><td>第3行</td></tr>
+			<tr><td>第4行</td><td>第4行</td></tr>
+			<tr><td>第5行</td><td>第5行</td></tr>
+			<tr><td>第6行</td><td>第6行</td></tr>
+			<tr><td>第7行</td><td>第7行</td></tr>
+		</tbody>
+	</table>
+	<hr>
+	<!-- 3333 -->
+	<input type="checkbox" value="1" name="check" checked="checked">
+	<input type="checkbox" value="2" name="check">
+	<input type="checkbox" value="3" name="check">
+	<input type="checkbox" value="4" name="check" checked="checked">
+	<input type="button" value="选中的个数" id="btn">
+
+</body>
+</html>

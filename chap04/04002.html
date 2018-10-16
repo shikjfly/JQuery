@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			$('span').bind('click', function(event) {
+				/* Act on the event */
+				var txt = $('#msg').html()+"<p>内层span标签被点击</p>"
+				$('#msg').html(txt);
+				event.stopPropagation();
+			});
+			$('.content').bind('click', function(event) {
+				/* Act on the event */
+				var txt = $('#msg').html()+"<p>外层div标签被,"+event.type+"。 X轴坐标："+event.pageX+"。 Y轴坐标："+event.pageY+"</p>"
+				$('#msg').html(txt);
+				// event.stopPropagation();
+				return false;
+
+
+			});
+			$('body').bind('click', function(event) {
+				/* Act on the event */
+				var txt = $('#msg').html()+"<p>body标签被点击</p>"
+				$('#msg').html(txt);
+			});
+		
+
+		});			
+	</script>
+	<style>
+		.content{
+			border: 1px solid red;
+			width: 200px;
+		}
+		span{
+			background: lightgrey;
+			display: block;
+			border: 1px solid blue;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="content">
+		外层div元素
+		<span>内层span元素</span>
+		外层div元素
+	</div>
+	<div id="msg"></div>
+
+</body>
+</html>

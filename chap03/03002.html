@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			$('#address').focus(function() {
+				var $addrVal =  $(this).val();
+				if ($addrVal == '请输入邮箱地址' ) {
+					$(this).val('');
+				}
+			});
+			$('#address').blur(function() {
+				var $addrVal =  $(this).val();
+				if ($addrVal == '' ) {
+					$(this).val('请输入邮箱地址');
+				}
+			});
+
+			$('#password').focus(function() {
+				var $pwdVal =  $(this).val();
+				if ($pwdVal == this.defaultValue ) {
+					$(this).val('');
+				}
+			});
+			$('#password').blur(function() {
+				var $pwdVal =  $(this).val();
+				if ($pwdVal == '' ) {
+					$(this).val(this.defaultValue);
+				}
+			});
+
+
+		});
+	</script>
+	<style>
+		input[type=text]{
+			color: grey;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="address" value="请输入邮箱地址"> <br>
+	<input type="text" id="password" value="请输入邮箱密码"> <br>
+	<input type="submit" value="登录">
+</body>
+</html>

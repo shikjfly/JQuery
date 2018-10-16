@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var $li = $("ul li:eq(0)");  //获取ul里第1个li节点
+			// var li_txt = $li.text();
+			var li_attr = $li.attr('title');
+			// alert(li_txt);
+			// alert(li_attr);
+
+			var $li_1 = $("<li>荣荣</li>"); 
+			var $li_2 = $("<li>小赵</li>");
+			var $li_3 = $("<li>--丽丽--</li>");
+			var $li_5 = $("<li>--我--</li>");
+			var $li_6 = $("<li>--爱--</li>");
+			var $li_7 = $("<li>--你--</li>");
+			var $li_8 = $("<li>--U--</li>");
+			$('#ul').append($li_1).append($li_2);
+			$li_3.appendTo( $('#ul') )
+			$('#ul').prepend($li_5)
+			$li_6.prependTo($('#ul'))
+			$li_7.insertAfter($('#ul'))
+			$li_8.insertBefore($('#ul'))
+			$('#ul li:eq(1)').insertAfter('#ul li:eq(2)')
+			$('#ul li').click(function() {
+				$(this).clone().appendTo('#ul');
+			});
+			$('p').replaceWith('<strong>你最不喜欢的水果是？</strong>');
+			$('strong').wrap('<p></p>')
+
+			$('p ,strong').toggle(function(){
+				$('#ul').css('color', 'red');
+			},function(){
+				$('#ul').css('color', 'blue');
+			})
+
+			$('#ul li').attr('title', 'value');
+			// alert($('p').html());
+			// alert($('p').text());
+			
+
+		});
+	</script>
+</head>
+<body>
+	<p title="选择你喜欢的水果。">选择你喜欢的水果。</p>
+	<ul>
+		<li>111</li>
+		<ul id="ul">
+			<li title="苹果">苹果</li>
+			<li title="橘子">橘子</li>
+			<li title="菠萝">菠萝</li>
+		</ul>		
+		<li>3333</li>
+	</ul>
+
+</body>
+</html>
