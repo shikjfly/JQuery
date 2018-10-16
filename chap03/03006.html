@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('a.tooltip').mouseover(function(event) {
+				/* 鼠标移入,显示title */
+				this.myTitle = this.title; 
+				this.title = "";
+				var tooltip = "<div id='tooltip'>"+this.myTitle+"</div>";
+				$("body").append(tooltip);
+				$("div#tooltip").css({
+					"top": event.pageY +20+'px', //获取鼠标Y轴位置
+					"left": event.pageX +10+'px', //获取鼠标X轴位置
+					"position":"absolute", 
+					"border" :"1px solid black",
+					"border-radius" : "5px",
+					"padding" : "2px 4px",
+					"background" : "linear-gradient(white,lightgrey)"
+				}).show("fast");				
+			}).mouseout(function() {
+				/* 鼠标移除，隐藏title */
+				$('div#tooltip').remove()
+				this.title = this.myTitle;		
+			}).mousemove(function(event) {
+				/* 鼠标移动，提示也跟着移动 */
+				$('#tooltip').css({
+					"top": event.pageY +20+'px', //获取鼠标Y轴位置
+					"left": event.pageX +10+'px' //获取鼠标X轴位置
+				});
+			});;;
+		});
+	</script>
+	<style>
+		a{
+			/*border-radius: 5px;*/
+		}
+	</style>
+</head>
+<body>
+	<a href="#" title="这是我的超链接提示">提示</a>
+	<p><a href="#" class="tooltip" title="这是我的超链接提示1">我提示1</a></p>
+	<p><a href="#" class="tooltip" title="这是我的超链接提示2">我提示2</a></p>
+	<p><a href="#" title="这是自带提示1">自带提示1</a></p>
+	<p><a href="#" title="这是自带提示2">自带提示2</a></p>
+</body>
+</html>

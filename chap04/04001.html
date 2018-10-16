@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			$('#panel .content').hide();
+		// 方式一
+			// $('#panel .head').click(function(event) {
+			// 	/* 对点击事件进行判断 */
+			// 	if ($('#panel .content').is(':visible')) {
+			// 		$('#panel .content').hide();
+			// 	}else{			
+			// 		$('#panel .content').show();
+			// 	}
+			// });
+		// 方式二，绑定点击事件
+			// $('#panel h5.head').bind('click', function(event) {
+			// 	var $contents = $(this).next();
+
+			// 	if ($contents.is(':visible')) {
+			// 		$contents.hide();
+			// 	}else{
+			// 		$contents.show();
+			// 	}
+			// });
+		// 方式三，绑定两个事件鼠标移入和移出
+			// $('#panel h5.head').bind('mouseover', function(event) {
+			// 	$(this).next().fadeIn();
+			// }).bind('mouseout', function(event) {
+			// 	$(this).next().fadeOut();				
+			// });
+
+		// 方式四，hover合成事件
+			// $('#panel h5.head').hover(function() {
+			// 	/* Stuff to do when the mouse enters the element */
+			// 	$(this).next().fadeIn();
+			// }, function() {
+			// 	/* Stuff to do when the mouse leaves the element */
+			// 	$(this).next().fadeOut();	
+			// });	
+		
+		// 方式五，toggle事件
+			$('#panel h5.head').toggle(function(){
+				$(this).next().show('slow');
+				$(this).addClass('highlight');
+			},function(){
+				$(this).next().hide('slow');
+				$(this).removeClass('highlight');
+			});
+	
+	/*
+		// 方式六，toggle事件 slideUp/slideDown动画
+			$('#panel h5.head').toggle(function(){
+				$(this).next().slideDown('slow');
+				$(this).addClass('highlight');
+			},function(){
+				$(this).next().slideUp('slow');
+				$(this).removeClass('highlight');
+			});
+	*/
+	/*
+		// 方式七，click事件里面的xxxToggle交互
+			$('#panel h5.head').click(function(event) {
+				// $(this).next().toggle("slow");
+				// $(this).next().slideToggle("slow");
+				$(this).next().fadeToggle("slow");
+			});
+	*/
+	
+		});			
+	</script>
+	<style>
+		#panel{
+			border: 1px solid black;
+		}
+		#panel .head{
+			margin: 0px;
+			padding: 10px;
+			background: #FF3300;
+		}
+		#panel .content{
+			border-top: 1px solid black;
+			padding: 10px;
+			text-indent: 25px;
+		}
+		#panel .highlight{
+			background: lightgrey;
+		}
+	</style>
+</head>
+<body>
+	<div id="panel">
+		<h5 class="head">什么是JQuery？</h5>
+		<div class="content">
+			JQuey是继Prototype之后又一个优秀的JavaScript库，他是一个有John Resig 创建于2006年1月的开源项目。JQuery凭借简介的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档，操作DOM、处理事件、执行动画和开发Ajax。它独特而又优雅的代码风格改变了JavaScript程序员的设计思路和编写程序的方式。
+		</div>
+	</div>
+</body>
+</html>

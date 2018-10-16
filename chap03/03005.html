@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('a.tooltip').mouseover(function() {
+				/* 鼠标移入,显示title */
+				$(this).after('<div class="addTip">'+this.title+'</div>');
+				
+			}).mouseout(function() {
+				/* 鼠标移除，隐藏title */
+				$('div.addTip').remove()		
+			});;
+		});
+	</script>
+	<style>
+		.addTip{
+			position: relative;
+			left: -10px;
+			top: 25px;
+			border: 1px solid black;
+			display: inline-block;
+			padding: 2px 4px;
+			text-decoration: none;
+			border-radius: 5px;
+			background: linear-gradient(white,lightgrey);
+		}
+	</style>
+</head>
+<body>
+	<a href="#" title="这是我的超链接提示">提示</a>
+	<p><a href="#" class="tooltip" title="这是我的超链接提示1">我提示1</a></p>
+	<p><a href="#" class="tooltip" title="这是我的超链接提示2">我提示2</a></p>
+	<p><a href="#" title="这是自带提示1">自带提示1</a></p>
+	<p><a href="#" title="这是自带提示2">自带提示2</a></p>
+</body>
+</html>

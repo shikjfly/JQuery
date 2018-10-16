@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".img a").mouseover(function(event) {
+				/* Act on the event */
+				var $img = '<img class="addImg" src="'+this.href+'"  />';
+				$('body').after($img);
+				$('.addImg').css({
+					"top" : event.pageY+20+'px',
+					"left" : event.pageX+10+'px',
+					"position" : "absolute"
+				});
+
+			}).mouseout(function(event) {
+				/* Act on the event */
+				$('.addImg').remove();
+			}).mousemove(function(event) {
+				/* Act on the event */
+				$('.addImg').css({
+					"top" : event.pageY+20+'px',
+					"left" : event.pageX+10+'px'
+				});
+			});
+		});
+	</script>
+	<style>
+		p{float: left;}
+	</style>
+</head>
+<body>
+	<p class="img">
+		<a href="images/apple_1_bigger.jpg"> 
+			<img src="images/apple_1.jpg" alt="这是苹果1"> 
+		</a>
+	</p>
+
+	<p class="img">
+		<a href="images/apple_2_bigger.jpg"> 
+			<img src="images/apple_2.jpg" alt="这是苹果2"> 
+		</a>
+	</p>
+	
+	<p class="img">
+		<a href="images/apple_3_bigger.jpg"> 
+			<img src="images/apple_3.jpg" alt="这是苹果3"> 
+		</a>
+	</p>
+	
+	<p class="img">
+		<a href="images/apple_4_bigger.jpg"> 
+			<img src="images/apple_4.jpg" alt="这是苹果4"> 
+		</a>
+	</p>
+</body>
+</html>

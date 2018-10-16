@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+
+		$(function() {
+
+			$("#form1 input:enabled").val(  $('select:selected').length );
+
+			$("#form1 input:disabled").val( $('#form1:text').length );
+
+
+		});
+
+	</script>
+
+</head>
+<body>
+	<form action="#" id="form1">
+		可用元素：<input name="add" value="可用元素文本框"> <br>
+		不可用元素：<input name="email" disabled="disabled" value="不可用元素文本框"> <br>
+		可用元素：<input name="che" value="可用元素文本框"> <br>
+		不可用元素：<input name="name" disabled="disabled" value="不可用元素文本框"> <br>
+
+		<textarea name="" id="" cols="30" rows="10"></textarea>
+
+		<hr>
+		<input type="checkbox" name="newsletter" checked="checked" value="t1"> test1
+		<input type="checkbox" name="newsletter" value="t2"> test2
+		<input type="checkbox" name="newsletter" value="t3"> test3
+		<input type="checkbox" name="newsletter" checked="checked" value="t4"> test4
+		<input type="checkbox" name="newsletter" value="t5"> test5
+		<hr>
+		<select name="test" id="">
+			<option value="zj">浙江</option>
+			<option value="hn">河南</option>
+			<option value="fj" selected="selected">福建</option>
+			<option value="hb">湖北</option>
+			<option value="gd">广东</option>
+		</select>
+		<select name="test" multiple="multiple">
+			<option value="zj">浙江</option>
+			<option value="hn" selected="selected">河南</option>
+			<option value="fj" selected="selected">福建</option>
+			<option value="hb">湖北</option>
+			<option value="gd">广东</option>
+		</select>
+
+	</form>
+</body>
+</html>

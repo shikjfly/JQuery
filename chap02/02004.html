@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02003</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	
+	<script type="text/javascript">
+		$(function() {
+			var $category = $('ul li:gt(5):not(:last)');
+			$category.hide();
+
+			var $toggleBtn = $('div.showmore > a');
+		
+			// 方式一
+			// $toggleBtn.click(function() {
+				
+			// 	if ($category.is(':visible')) 
+			// 	{
+			// 		$category.hide();
+			// 		$(this).find('span')
+			// 			   .css('color', 'blue')
+			// 			   .text('显示全部品牌');
+			// 	}else{
+			// 		$category.show();
+			// 		$(this).find('span')
+			// 			   .css('color', 'red')
+			// 			   .text('显示精简品牌');
+			// 	}
+			// 	return false;
+			// });
+
+			// 方式二
+			$toggleBtn.toggle(function(){
+				$category.show();
+					$(this).find('span')
+						   .css('color', 'red')
+						   .text('显示精简品牌');
+
+			},function(){
+					$category.hide();
+					$(this).find('span')
+						   .css('color', 'blue')
+						   .text('显示全部品牌');
+			})
+		});
+	</script>
+
+	<style>
+		div.SubCategoryBox{border: 1px solid red; text-align: center;}
+		ul{padding-left: 0px;text-align: left;}
+		li{list-style: none; display: inline-block;width: 155px; text-align: center;}
+		a{text-decoration: none;}
+		div.showmore{border: 1px solid blue; display: inline-block;padding: 5px 10px;margin: 10px;border-radius: 10px;}
+	</style>
+
+
+</head>
+<body>
+	<div class="SubCategoryBox">
+		<ul>
+			<li><a href="#">佳能</a><i>(30440)</i></li>
+			<li><a href="#">索尼</a><i>(27220)</i></li>
+			<li><a href="#">三星</a><i>(20808)</i></li>
+			<li><a href="#">尼康</a><i>(17821)</i></li>
+			<li><a href="#">松下</a><i>(12289)</i></li>
+			<li><a href="#">卡西欧</a><i>(8242)</i></li>
+			<li><a href="#">富士</a><i>(14894)</i></li>
+			<li><a href="#">柯达</a><i>(9520)</i></li>
+			<li><a href="#">宾得</a><i>(2195)</i></li>
+			<li><a href="#">理光</a><i>(4114)</i></li>
+			<li><a href="#">奥利巴斯</a><i>(12205)</i></li>
+			<li><a href="#">明基</a><i>(1466)</i></li>
+			<li><a href="#">爱国者</a><i>(3091)</i></li>
+			<li><a href="#">其他品牌</a><i>(7275)</i></li>
+		</ul>
+		<div class="showmore">
+			<a href="more.html"><span>显示全部品牌</span></a>
+		</div>
+	</div>
+</body>
+</html>
