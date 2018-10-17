@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {	
+			
+			$('.change_btn .next').click(function(event) {
+				/* Act on the event */
+				$('.highlight_tip span:nth-child(1)').removeClass('current').next().addClass('current');
+				
+				if ($('.v_content_list').position().left == -1779) {
+					
+					$('.v_content_list').animate( {'left':'0px'}, 'normal')
+				}else{
+					$('.v_content_list').animate( {'left':'-='+'593px'}, 'normal')
+				}
+			});
+
+			$('.change_btn .pre').click(function(event) {
+				/* Act on the event */
+				$('.highlight_tip span:nth-child(1)').addClass('current').next().removeClass('current');
+				if ($('.v_content_list').position().left == 0) {
+					
+					$('.v_content_list').animate( {'left':'-1779px'}, 'normal')
+
+				}else{
+					$('.v_content_list').animate( {'left':'+='+'593px'}, 'normal')
+				}
+			});
+			
+	
+		});			
+	</script>
+	<style>
+		*{margin: 0; padding: 0;}
+		.v_show{width: 595px; margin: 20px 0px 0px 60px;}
+		.v_caption{height: 35px; border: 1px solid lightgrey; background: url(img/btn_cartoon.gif) no-repeat 0 0; }
+		.cartoon, .highlight_tip,.change_btn{float: left;}
+		.cartoon{background: url(img/btn_cartoon.gif)no-repeat 0px -100px; width: 100px; height: 30px;}
+		.highlight_tip span{background: url(img/btn_cartoon.gif) no-repeat 0px -305px; width: 7px; height: 30px; display: inline-block;padding-left: 2px;}
+		.highlight_tip .current{background-position: 0px -205px;}
+
+		.change_btn .pre{background: url(img/btn_cartoon.gif) no-repeat 0px -395px; width: 31px; height: 30px; display: inline-block;margin-left: 12px; }
+		.change_btn .next{background: url(img/btn_cartoon.gif) no-repeat -30px -395px; width: 31px; height: 30px; display: inline-block;}
+		.v_caption a{text-decoration: none; display:block;line-height: 35px; font-size: .6em;padding-right: 10px;}
+		
+
+		.v_caption em {float: right;}
+		.v_content{height: 160px; border: 1px solid lightgrey; overflow: hidden; position: relative; }
+		.v_content_list{position: absolute;}
+		.v_content_list ul li{list-style: none; float: left;display: inline;padding: 8px; margin: 10px 2px 0; font-size: .8em;}
+		.v_content_list ul li h4 a{text-decoration: none; margin: 3px 0px; display: block;}
+
+	</style>
+</head>
+<body>
+	<div class="v_show">
+		<div class="v_caption">
+			<h2 class="cartoon" title="卡通动漫"></h2>
+
+			<div class="highlight_tip">
+				<span class="current"></span> 
+				<span></span> 
+				<span></span> 
+				<span></span>
+			</div>
+
+			<div class="change_btn">
+				<span class="pre"></span>
+				<span class="next"></span>
+			</div>
+
+			<em><a href="#">更多>></a></em>
+
+		</div>
+
+		<div class="v_content">
+			<div class="v_content_list">
+				<ul>
+					<li>
+						<a href="#"><img src="img/01.jpg" title="海贼王"></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放：<em>28.726</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/01.jpg" title="海贼王"></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放：<em>28.726</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/01.jpg" title="海贼王"></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放：<em>28.726</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/01.jpg" title="海贼王"></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放：<em>28.726</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/02.jpg" title="哆啦A梦"></a>
+						<h4><a href="#">哆啦A梦</a></h4>
+						<span>播放：<em>21.326</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/02.jpg" title="哆啦A梦"></a>
+						<h4><a href="#">哆啦A梦</a></h4>
+						<span>播放：<em>21.326</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/02.jpg" title="哆啦A梦"></a>
+						<h4><a href="#">哆啦A梦</a></h4>
+						<span>播放：<em>21.326</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/02.jpg" title="哆啦A梦"></a>
+						<h4><a href="#">哆啦A梦</a></h4>
+						<span>播放：<em>21.326</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/03.jpg" title="火影忍者"></a>
+						<h4><a href="#">火影忍者</a></h4>
+						<span>播放：<em>11.312</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/03.jpg" title="火影忍者"></a>
+						<h4><a href="#">火影忍者</a></h4>
+						<span>播放：<em>11.312</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/03.jpg" title="火影忍者"></a>
+						<h4><a href="#">火影忍者</a></h4>
+						<span>播放：<em>11.312</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/03.jpg" title="火影忍者"></a>
+						<h4><a href="#">火影忍者</a></h4>
+						<span>播放：<em>11.312</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/04.jpg" title="龙珠"></a>
+						<h4><a href="#">龙珠</a></h4>
+						<span>播放：<em>34.592</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/04.jpg" title="龙珠"></a>
+						<h4><a href="#">龙珠</a></h4>
+						<span>播放：<em>34.592</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/04.jpg" title="龙珠"></a>
+						<h4><a href="#">龙珠</a></h4>
+						<span>播放：<em>34.592</em></span>
+					</li>
+					<li>
+						<a href="#"><img src="img/04.jpg" title="龙珠"></a>
+						<h4><a href="#">龙珠</a></h4>
+						<span>播放：<em>34.592</em></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
