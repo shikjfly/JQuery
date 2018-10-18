@@ -6,8 +6,6 @@
 	<script type="text/javascript" src="../scripts/jquery.js"></script>
 	<script type="text/javascript">
 		$(function() {
-
-/* 多行文本 */
 			var $comment = $('#comment');
 			$('.bigger').click(function(event) {
 				/* 多行文本 放大按钮的点击事件 */
@@ -35,7 +33,7 @@
 					$comment.animate({scrollTop:'+=50'}, 400)
 				}
 			});
-/*复选框*/ 
+
 			$('#CheckAll').click(function(event) {
 				/* 复选框 全选按钮的点击事件 */
 				$('[name=items]:checkbox').attr('checked', true);
@@ -58,7 +56,9 @@
 					str += $(this).val() + "\n" ;					
 				});
 				alert(str);
+
 			});
+
 			
 			$('#checkall').click(function(event) {
 				/* 全选/全不选按钮的点击事件 */
@@ -75,91 +75,6 @@
 				});
 				$('#checkall').attr('checked', flag);
 			});
-/*下拉框*/ 
-			$('#add').click(function(){
-				/*下拉框，选中添加按钮点*/
-				var $options = $('#select1 option:selected');
-				var $remove = $options.remove(); 
-				$remove.appendTo('#select2')
-			})
-			$('#add_all').click(function(){
-				/*下拉框，全部选中添加按钮点*/
-				var $options = $('#select1 option');
-				// var $remove = $options.remove(); 
-				$options.appendTo('#select2')
-			})
-			$('#select1').dblclick(function(event) {
-				/* 下拉框，双击事件，添加到右边 */
-				var $options = $('option:selected',  this);
-				$options.appendTo('#select2')				
-			});
-			$('#remove').click(function(){
-				/*下拉框，选中添加按钮点*/
-				var $options = $('#select2 option:selected');
-				var $remove = $options.remove(); 
-				$remove.appendTo('#select1')
-			})
-			$('#remove_all').click(function(){
-				/*下拉框，全部选中添加按钮点*/
-				var $options = $('#select2 option');
-				// var $remove = $options.remove(); 
-				$options.appendTo('#select1')
-			})
-			$('#select2').dblclick(function(event) {
-				/* 下拉框，双击事件，添加到右边 */
-				var $options = $('option:selected',  this);
-				$options.appendTo('#select1')				
-			});
-/*注册登录*/ 
-			// 添加必选红色星星
-			// $("<strong class='high'>*</strong>").insertAfter( $('.required') )
-			$('form :input.required').each(function(){
-				/*创建红色必填星星*/ 
-				var $required = $("<strong class='high'>*</strong>");
-				$(this).parent().append($required);
-			})
-			$('form :input').blur(function(){
-				/* input失去焦点事件 */ 
-				var $parent = $(this).parent();
-				$parent.find('.formtips').remove();
-				// 验证用户名
-				if ( $(this).is('#username') ) {
-					if ( this.value == '' || this.value.length<6 ) {
-						var errprMsg = '请输入至少6位的用户名。';
-						$parent.append('<span class="formtips onError">'+errprMsg+'</span>');
-					}else{
-						var okMsg = '输入正确。';
-						$parent.append('<span class="formtips onOK">'+okMsg+'</span>');
-					}//end if else
-				}// end if
-				// 验证邮箱
-				if ( $(this).is('#email') ) {
-					if ( this.value == '' || this.value.length<6 ) {
-						var errprMsg = '请输入正确的E-Mail地址。';
-						$parent.append('<span class="formtips onError">'+errprMsg+'</span>');
-					}else{
-						var okMsg = '输入正确。';
-						$parent.append('<span class="formtips onOK">'+okMsg+'</span>');
-					}//end if else
-				}// end if
-			}).keyup(function(event) {
-				/* Act on the event */
-				$(this).triggerHandler('blur');
-			}).focus(function(event) {
-				/* Act on the event */
-				$(this).triggerHandler('blur');
-			});;
-
-			$('#send2').click(function(){
-				/*发送事件，判断是否可以发送*/
-				$('form :input.required').trigger('blur');
-				var numError = $('form .onError').length;
-				if (numError) {
-					return false;
-				}
-				alert('注册成功，密码已发到您的邮箱，请查收。');
-			})
-			
 
 		});			
 	</script>
@@ -171,67 +86,21 @@
 			cursor: pointer;
 			border-radius: 5px;
 		}
-
-		/*下拉框*/
-		.Select{
-			/*border: 1px solid red;*/
-			margin: 5px 0px;
-			padding: 5px;
-		}
-		.centent{
-			display: inline-block;
-			padding-right: 10px;
-		}
-		#select1,#select2{
-			width: 100px;
-			height: 200px;
-		}
-		.centent span{
-			border: 1px solid grey;
-			margin-top: 4px;
-			border-radius: 3px;
-			border-radius: 3px;
-			display: inline-block;
-			font-size: .8em;
-			width: 100px;
-			text-align: center;
-			background: lightgrey;
-		}
-		/*<!-- 注册登录 -->*/
-		.int label{
-			width: 80px;
-			text-align: right;
-			display: inline-block;
-		}
-		.Reg{			
-			margin: 20px 0px;
-		}
-		.sub{
-			margin: 10px 0px;
-			margin-left: 55px;
-		}
-		.sub input{
-			width: 75px;
-			margin-left: 10px;
-			border-radius: 2px;
-		}
-		.high{
-			color: red;
-		}
-		.onError{
-			color: red;
-			font-size: .8em;
-			font-style: italic;
-			font-weight: bold;
-		}
-
 	</style>
 </head>
 <body>
 	<form action="#" method="post" id="regForm">
 		<fieldset>
 			<legend>个人信息</legend>
-<!-- 多行文本 -->
+			<div>
+				<label for="username">名称：</label>
+				<input type="text" id="username">
+			</div>
+			<div>
+				<label for="pass">密码：</label>
+				<input type="password" id="pass">
+			</div>
+			
 			<div class="msg">
 				<div class="msg_caption">
 					<span class="bigger">放大</span>
@@ -243,7 +112,7 @@
 					<textarea name="comment" id="comment" cols="100" rows="5">多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本 </textarea>
 				</div>
 			</div>
-<!-- 复选框 -->
+
 			<div id="Checkbox">
 				您的爱好运动是？ <input type="checkbox" id="checkall"><label for="checkall">全选/全不选</label> <br>
 				<input type="checkbox" name="items" value="爬山">爬山
@@ -258,55 +127,7 @@
 				<input type="button" id="CheckRev" value="反选">
 				<input type="button" id="send" value="提交">
 			</div>
-<!-- 下拉框 -->
-			<div class="Select">
-				<div class="centent">
-					<select multiple="multiple" id="select1">
-						<option value="1">选项1</option>
-						<option value="2">选项2</option>
-						<option value="3">选项3</option>
-						<option value="4">选项4</option>
-						<option value="5">选项5</option>
-						<option value="6">选项6</option>
-						<option value="7">选项7</option>
-						<option value="8">选项8</option>
-						<option value="9">选项9</option>			
-						<option value="10">选项10</option>			
-					</select>
-					<div>
-						<span id="add">选中添加&gt;&gt;</span> <br>
-						<span id="add_all">全部添加&gt;&gt;</span>
-					</div>
-				</div>
 
-				<div class="centent">
-					<select multiple="multiple" id="select2">
-					</select>
-					<div>
-						<span id="remove">&lt;&lt;删除选中</span> <br>
-						<span id="remove_all">&lt;&lt;全部删除</span>
-					</div>
-				</div>
-			</div>
-<!-- 注册登录 -->
-			<div class="Reg">
-				<div class="int">
-					<label for="username">用户名：</label>
-					<input type="text" id="username" class="required">
-				</div>
-				<div class="int">
-					<label for="email">邮箱：</label>
-					<input type="email" id="email" class="required">
-				</div>
-				<div class="int">
-					<label for="personinfo">个人资料：</label>
-					<input type="text" id="personinfo">
-				</div>
-				<div class="sub">
-					<input type="submit" value="提交" id="send2">
-					<input type="reset" id="res">
-				</div>
-			</div>
 
 		</fieldset>
 	</form>
