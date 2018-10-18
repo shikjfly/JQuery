@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01001</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var $comment = $('#comment');
+			$('.bigger').click(function(event) {
+				/* 多行文本 放大按钮的点击事件 */
+				if ($comment.height() <500) {
+					$comment.height( $comment.height()+50 )
+				};//end if
+			});
+
+			$('.smaller').click(function(event) {
+				/* 多行文本 缩小按钮的点击事件 */
+				if (!$comment.is(':animated')) {
+					$comment.animate({height:'-=50'}, 400)
+				}
+			});
+
+			$('.scrollUp').click(function(event) {
+				/* 多行文本 向上按钮的点击事件 */
+				if (!$comment.is(':animated')) {
+					$comment.animate({scrollTop:'-=50'}, 400)
+				}
+			});
+			$('.scrollDown').click(function(event) {
+				/* 多行文本 向下按钮的点击事件 */
+				if (!$comment.is(':animated')) {
+					$comment.animate({scrollTop:'+=50'}, 400)
+				}
+			});
+
+			$('#CheckAll').click(function(event) {
+				/* 复选框 全选按钮的点击事件 */
+				$('[name=items]:checkbox').attr('checked', true);
+			});
+			$('#CheckNo').click(function(event) {
+				/* 复选框 全不选按钮的点击事件 */
+				$('[name=items]:checkbox').attr('checked', false);
+			});
+			$('#CheckRev').click(function(event) {
+				/* 复选框 反选按钮的点击事件 */
+				$('[name=items]:checkbox').each(function(index, el) {
+					// $(this).attr('checked', !$(this).attr('checked') );
+					this.checked = !this.checked;
+				});
+			});
+			$('#send').click(function(event) {
+				/* 复选框 提交按钮的点击事件 */
+				var str = "您选中的是：\n";
+				$('[name=items]:checkbox:checked').each(function(index, el) {
+					str += $(this).val() + "\n" ;					
+				});
+				alert(str);
+
+			});
+
+			
+			$('#checkall').click(function(event) {
+				/* 全选/全不选按钮的点击事件 */
+				$('[name=items]:checkbox').attr('checked', this.checked);
+			});
+
+			$('[name=items]:checkbox').click(function(event) {
+				/* 复选按钮组点击事件 */
+				var flag = true;
+				$('[name=items]:checkbox').each(function(index, el) {
+					if (!this.checked) {
+						flag = false;
+					}				
+				});
+				$('#checkall').attr('checked', flag);
+			});
+
+		});			
+	</script>
+	<style>
+		.msg_caption span{
+			border: 1px solid red;
+			margin: 5px 10px;
+			display: inline-block;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="post" id="regForm">
+		<fieldset>
+			<legend>个人信息</legend>
+			<div>
+				<label for="username">名称：</label>
+				<input type="text" id="username">
+			</div>
+			<div>
+				<label for="pass">密码：</label>
+				<input type="password" id="pass">
+			</div>
+			
+			<div class="msg">
+				<div class="msg_caption">
+					<span class="bigger">放大</span>
+					<span class="smaller">缩小</span>
+					<span class="scrollUp">向上</span>
+					<span class="scrollDown">向下</span>
+				</div>
+				<div>
+					<textarea name="comment" id="comment" cols="100" rows="5">多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本 </textarea>
+				</div>
+			</div>
+
+			<div id="Checkbox">
+				您的爱好运动是？ <input type="checkbox" id="checkall"><label for="checkall">全选/全不选</label> <br>
+				<input type="checkbox" name="items" value="爬山">爬山
+				<input type="checkbox" name="items" value="跑步">跑步
+				<input type="checkbox" name="items" value="骑行">骑行
+				<input type="checkbox" name="items" value="游泳">游泳
+				<input type="checkbox" name="items" value="游泳">游泳
+				<input type="checkbox" name="items" value="攀岩">攀岩
+				<input type="checkbox" name="items" value="登山">登山  <br>
+				<input type="button" id="CheckAll" value="全选">
+				<input type="button" id="CheckNo" value="全不选">
+				<input type="button" id="CheckRev" value="反选">
+				<input type="button" id="send" value="提交">
+			</div>
+
+
+		</fieldset>
+	</form>
+</body>
+</html>
