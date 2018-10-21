@@ -81,13 +81,13 @@
 				var $options = $('#select1 option:selected');
 				var $remove = $options.remove(); 
 				$remove.appendTo('#select2')
-			})
+			}).css('cursor', 'pointer');
 			$('#add_all').click(function(){
 				/*下拉框，全部选中添加按钮点*/
 				var $options = $('#select1 option');
 				// var $remove = $options.remove(); 
 				$options.appendTo('#select2')
-			})
+			}).css('cursor', 'pointer');
 			$('#select1').dblclick(function(event) {
 				/* 下拉框，双击事件，添加到右边 */
 				var $options = $('option:selected',  this);
@@ -159,7 +159,48 @@
 				}
 				alert('注册成功，密码已发到您的邮箱，请查收。');
 			})
-			
+/*jQuery获取子元素示例*/
+			$('ul.level-2').find('li').css('border', '1px solid red');
+			$('ul.level-2').children().css('border', '1px solid green');
+/*表单*/ 			
+			$('#formTb tbody>tr:even').addClass('even');
+			$('#formTb tbody>tr:odd').addClass('odd');
+			// $('#formTb tbody>tr:contains("四");').addClass('selected');
+			$('#formTb tbody > tr').click(function(event) {
+				/* 表单1 单选框 点击的时候，高亮显示该行 */
+				$(this)
+					.addClass('selected')
+					.siblings().removeClass('selected')
+					.end()
+					.find('input:radio').attr('checked', true);
+			});
+			$('#formTb :radio:checked').parent().parent().addClass('selected');
+
+			$('#formTb2 tbody>tr').click(function(){
+				/* 表单2 复选框 点击的时候，高亮显示该行 */
+				if ( $(this).hasClass('selected') ) {
+					$(this)
+						.removeClass('selected')
+						.find('input:checkbox').attr('checked', false);
+				}else{
+					$(this)
+						.addClass('selected')
+						.find('input:checkbox').attr('checked', true);
+				}
+			});
+
+			$('#formTb3 tbody>tr.parent').click(function(event) {
+				/* 表单3 点击的时候，折叠该行 */
+				$(this)
+					.toggleClass('selected')
+					.siblings('.child_'+this.id).toggle();
+			});
+
+			// $('#formTb4 tbody tr').hide().filter(":contains('杭州');").show();
+			$('#formTb4 #filterName').keyup(function(event) {
+				/* 表单4 输入显示筛选结果 */
+				$('#formTb4 tbody tr').hide().filter(":contains('"+$(this).val()+"');").show();
+			}).keyup();;
 
 		});			
 	</script>
@@ -171,7 +212,6 @@
 			cursor: pointer;
 			border-radius: 5px;
 		}
-
 		/*下拉框*/
 		.Select{
 			/*border: 1px solid red;*/
@@ -224,7 +264,25 @@
 			font-style: italic;
 			font-weight: bold;
 		}
+		table, th,td{
+			border: 1px solid red;
+			border-collapse: collapse;
+			padding: 5px 15px;
+		}
+		.even{background: #FFF38F;}
+		.odd{background: lightblue;}
+		.selected{background: #FF3FEE !important;}
+		#formTb3 tbody tr:nth-child(1),#formTb3 tbody tr:nth-child(4),#formTb3 tbody tr:nth-child(7){
+			color: red;
+			font-size: 1.2em;
+			font-weight: bold;
+			background: lightblue;
+			padding-left: 0px;
+		}
 
+		#formTb4 table,#formTb4 th{
+			border: none;
+		}
 	</style>
 </head>
 <body>
@@ -307,7 +365,248 @@
 					<input type="reset" id="res">
 				</div>
 			</div>
+<!-- 表单  -->
+			<div id="formTb">
+				<table>
+					<thead>
+						<tr>
+							<th>单选</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>暂住地</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="radio" checked name="bingo"></td>
+							<td>李四</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="bingo"></td>
+							<td>王五</td>
+							<td>男</td>
+							<td>湖南长沙</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="bingo"></td>
+							<td>赵六</td>
+							<td>男</td>
+							<td>浙江温州</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="bingo"></td>
+							<td>Rain</td>
+							<td>男</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="bingo"></td>
+							<td>MAXMAN</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<hr>
+			<div id="formTb2">
+				<table>
+					<thead>
+						<tr>
+							<th>多选</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>暂住地</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>李四</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>王五</td>
+							<td>男</td>
+							<td>湖南长沙</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>赵六</td>
+							<td>男</td>
+							<td>浙江温州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>Rain</td>
+							<td>男</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>MAXMAN</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<hr>
+			<div id="formTb3">
+				<table>
+					<thead>
+						<tr>
+							<th>多选</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>暂住地</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="parent" id="row_01">
+							<td colspan="4">前台设计组</td>
+						</tr>
+						<tr class="child_row_01">
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>李四</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr class="child_row_01">
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>王五</td>
+							<td>男</td>
+							<td>湖南长沙</td>
+						</tr>
+						<tr class="parent" id="row_02">
+							<td colspan="4">前台开发组</td>
+						</tr>
+						<tr class="child_row_02">
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>赵六</td>
+							<td>男</td>
+							<td>浙江温州</td>
+						</tr>
+						<tr class="child_row_02">
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>王五</td>
+							<td>男</td>
+							<td>湖南长沙</td>
+						</tr>
+						<tr class="parent" id="row_03">
+							<td colspan="4">后台开发组</td>
+						<tr class="child_row_03">
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>Rain</td>
+							<td>男</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr class="child_row_03">
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>MAXMAN</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<hr>
+			<div id="formTb4">
+				筛选：<input type="text" id="filterName">
+				<table>
+					<thead>
+						<tr>
+							<th>多选</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>暂住地</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>李四</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>王五</td>
+							<td>男</td>
+							<td>湖南长沙</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>赵六</td>
+							<td>男</td>
+							<td>浙江温州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>Rain</td>
+							<td>男</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>MAXMAN</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>李二</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>王四</td>
+							<td>男</td>
+							<td>湖南长沙</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>李六</td>
+							<td>女</td>
+							<td>浙江杭州</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="checkbingo"></td>
+							<td>王八</td>
+							<td>男</td>
+							<td>湖南长沙</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
+
+
+<!-- jQuery获取子元素示例 -->
+			<div class="example">
+				<ul class="level-1">
+				    <li class="item-i">I</li>
+				    <li class="item-ii">II
+				        <ul class="level-2">
+				        	<li class="item-a">A</li>
+				        	<li class="item-b">B
+					         	<ul class="level-3">
+					           		<li class="item-1">1</li>
+					             	<li class="item-2">2</li>
+					            	<li class="item-3">3</li>
+					            </ul>
+				            </li>
+				            <li class="item-c">C</li>
+				        </ul>
+				    </li>
+				    <li class="item-iii">III</li>
+				</ul>
+			</div>
 		</fieldset>
 	</form>
 </body>
